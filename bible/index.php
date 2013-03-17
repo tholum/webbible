@@ -4,13 +4,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js" ></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js" ></script>
-    <link href="./js/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
+    <link href="./css/wijmo/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
 
-    <link href="./js/themes/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
+    <link href="./css/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
     <link href="css/bible/jquery-ui-1.10.1.custom.css" rel="stylesheet" type="text/css" />
-
-    <script src="./js/external/jquery-1.8.2.min.js" type="text/javascript"></script>
-    <script src="./js/external/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
     <script src="./js/wijmo/jquery.wijmo.wijutil.js" type="text/javascript"></script>
     <script src="./js/wijmo/jquery.wijmo.wijsplitter.js" type="text/javascript"></script>
     <script id="scriptInit" type="text/javascript">
