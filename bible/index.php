@@ -20,21 +20,43 @@
 </head>
 <body>
 <script>
-var slimcrm = {};
+var slimcrm = { 
+    tabs: 0 ,
+    defaults: {
+        format: 'OSIS',
+        version: 'ESV',
+        book: 'Romans',
+        chapter: 8,
+        verse: 1
+    }
+};
+
+
+slimcrm.add_tab = function(options){
+    var settings = slimcrm.defaults;
+    $.extend( settings , options );
+    slimcrm.tabs++;
+    settings.id = "bible_tab" + slimcrm.tabs;
+    $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse );
+};
+
 $(document).ready(function(){
 	slimcrm.tpl = _.template( $('#verse').html() );
 	slimcrm.bbl = _.template( $('#books-dropdown').html() );
+        slimcrm.bible = {
+            new_tab: _.template( $('#tab-inner').html() )
+        };
 	$('.bk').html('<select id="bible_book" >' + slimcrm.bbl( { 'books': slimcrm.bible }) + '</select>' );
-	$.getJSON('/cgi-bin/vrp.cgi' , function( data ){ slimcrm.data = data; } ); 
-	$('#tabs').tabs();	
+	$.getJSON('/cgi-bin/vrp.cgi' , function( data ){ slimcrm.data = data; } );
+	$('#tabs').tabs();
+        slimcrm.add_tab();
 });
 
 slimcrm.search_bible = function(){
-	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $('#bible_book').val() , 'bible': $('.book').val() , 'format': $('.format').val() } ) , function( data){ $('#main').html( slimcrm.tpl( { 'data': data } ) ); } ) ;
+	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $('#bible_book').val() , 'bible': $('.book').val() , 'format': 'OSIS' } ) , function( data){ $('#main').html( slimcrm.tpl( { 'data': data } ) ); } ) ;
 }
 slimcrm.process_osis_text = function(text){
- 
- 
+    return text;
 }
 
 
@@ -51,21 +73,20 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 	</div>
 	<div id="tabs" >
 		<ul>
-			<li><a href="#maintab">Main</a></li>
 		</ul>
-		<div id="maintab" >
+		
+	</div>
+</div>
+<script type="text/template" id="books-dropdown">
+<% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
+</script>
+<script type="text/template" id="tab-inner">
+<div id="tab_<%= id %>" class="tab" >
 			<ul class="searchbar">
 				<li>
 					<select class="book" >
 						<option value="ESV" >ESV</option>
 						<option value="KJV" >KJV</option>
-					</select>
-				</li>
-				<li>
-					<select class="format" >
-						<option value="OSIS" >OSIS</option>
-						<option value="PLAIN" >PLAIN</option>
-						<option value="HTML" >HTML</option>
 					</select>
 				</li>
 				<li class="bk"></li>
@@ -74,19 +95,13 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 			</ul>
 			<div id="main" ></div>
 		</div>
-	</div>
-</div>
-<script type="text/template" id="books-dropdown">
-<% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
 </script>
+
 <script type="text/template" id="verse-new" >
 <pre>
 <% _(data).each(function( line ){ %><%= line.text %><% } ) %>
 </pre>
 </script>
-
-
-
 <script type="text/template" id="verse" >
 <div>
 <% _(data).each(function( line ){ %>
