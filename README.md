@@ -9,3 +9,10 @@ Thanks Also to
 [backbone.js](http://backbonejs.org/)
 [underscore.js](http://underscorejs.org/)
 [wijmo] (https://github.com/wijmo/Wijmo-Open)
+
+Notes For some reson wijmo does not like jquery ui 1.10, so I am using the included jquery ui
+
+Licensing
+========
+webbible Open is completely free and open source with no limitations. webbible Open can be licensed under the [MIT](http://www.opensource.org/licenses/mit-license.html) or [GPL](http://www.opensource.org/licenses/gpl-2.0.php) licenses.
+

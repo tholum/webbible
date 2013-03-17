@@ -32,6 +32,11 @@ $(document).ready(function(){
 slimcrm.search_bible = function(){
 	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $('#bible_book').val() , 'bible': $('.book').val() , 'format': $('.format').val() } ) , function( data){ $('#main').html( slimcrm.tpl( { 'data': data } ) ); } ) ;
 }
+slimcrm.process_osis_text = function(text){
+ 
+ 
+}
+
 
 </script>
 <script  >
