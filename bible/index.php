@@ -83,17 +83,13 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 </script>
 <script type="text/template" id="tab-inner">
 <div id="tab_<%= id %>" class="tab" >
-			<ul class="searchbar">
-				<li>
+			<div>
 					<select class="book" >
 						<option value="ESV" >ESV</option>
 						<option value="KJV" >KJV</option>
 					</select>
-				</li>
-				<li class="bk"></li>
-				<li><input type="text" id="search_string" /></li>
-				<li><button onclick="slimcrm.search_bible();" >Search</button></li>
-			</ul>
+				<input type="text" id="search_string" /><
+				<button onclick="slimcrm.search_bible();" >Search</button>
 			<div id="main" ></div>
 		</div>
 </script>
