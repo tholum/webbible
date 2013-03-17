@@ -5,7 +5,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js" ></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js" ></script>
     <link href="./css/wijmo/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
-
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link href="css/wijmo/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
     <link href="css/bible/jquery-ui-1.10.1.custom.css" rel="stylesheet" type="text/css" />
     <script src="./js/wijmo/jquery.wijmo.wijutil.js" type="text/javascript"></script>
@@ -16,38 +16,6 @@
         });
     </script>
 <style>
-	.ui-tabs-panel {
-		padding: 0px !important;
-	}
-	ul.searchbar
-	{
-		list-style-type: none;
-		width: 100%;
-		height: 30px;
-		margin: 0;
-		padding: 5px;
-		background: #555;
-		/* IE10 Consumer Preview */ 
-background-image: -ms-linear-gradient(top, #636363 0%, #BBBBBB 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-linear-gradient(top, #636363 0%, #BBBBBB 100%);
-
-/* Opera */ 
-background-image: -o-linear-gradient(top, #636363 0%, #BBBBBB 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #636363), color-stop(1, #BBBBBB));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(top, #636363 0%, #BBBBBB 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: linear-gradient(to bottom, #636363 0%, #BBBBBB 100%);
-	}
-	.searchbar li {
-		float: left;
-	}
 </style>
 </head>
 <body>
