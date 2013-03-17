@@ -1,7 +1,7 @@
 <html>
 <head>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+<script src="js/jquery-1.8.2.min.js" ></script>
+<script src="js/jquery-ui-1.9.1.custom.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js" ></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js" ></script>
     <link href="./css/wijmo/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
