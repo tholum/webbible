@@ -69,7 +69,8 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <div id="splitter">
 	<div>
 		<button onclick="$('#main').html(slimcrm.tpl({ data: slimcrm.data} ));">Click</button>
-		<button onclick="$('#tabs').append('<div id=abc>This is a test</div>');$('#tabs').tabs('add','#abc','Name');">Add A Tab</button>
+		<button onclick="slimcrm.add_tab({ version: 'ESV'});">ESV</button>
+                <button onclick="slimcrm.add_tab({ version: 'KJV'});">ESV</button>
 	</div>
 	<div id="tabs" >
 		<ul>
