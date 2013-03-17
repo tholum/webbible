@@ -6,7 +6,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js" ></script>
     <link href="./css/wijmo/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
 
-    <link href=".css/wijmo/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
+    <link href="css/wijmo/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
     <link href="css/bible/jquery-ui-1.10.1.custom.css" rel="stylesheet" type="text/css" />
     <script src="./js/wijmo/jquery.wijmo.wijutil.js" type="text/javascript"></script>
     <script src="./js/wijmo/jquery.wijmo.wijsplitter.js" type="text/javascript"></script>
