@@ -115,7 +115,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 
 <script type="text/template" id="verse-new" >
 <pre>
-<% _(data).each(function( line ){ %><% process_verse_text( line.verse ) %> <%= line.text %><% } ) %>
+<% _(data).each(function( line ){ %><%= process_verse_text( line.verse ) %> <%= line.text %><% } ) %>
 </pre>
 </script>
 <script type="text/template" id="verse" >
