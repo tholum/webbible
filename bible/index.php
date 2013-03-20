@@ -121,6 +121,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="verse" >
 <div>
 <% _(data).each(function( line ){ %>
+            <%= line.verse  %>
 <%= line.text.replace("\n" , "<br/>") %>
 <% } ) %>
 </div>
