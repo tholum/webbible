@@ -52,8 +52,8 @@ $(document).ready(function(){
         slimcrm.add_tab();
 });
 
-slimcrm.search_bible = function(){
-	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $('#bible_book').val() , 'bible': $('.book').val() , 'format': 'OSIS' } ) , function( data){ $('#main').html( slimcrm.tpl( { 'data': data } ) ); } ) ;
+slimcrm.search_bible = function(id){
+	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $("#search_string_" + id  ).val() , 'bible': $('#book_' + id ).val() , 'format': 'OSIS' } ) , function( data){ $('#main_' + id ).html( slimcrm.tpl( { 'data': data } ) ); } ) ;
 }
 slimcrm.process_osis_text = function(text){
     return text;
@@ -85,13 +85,13 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="tab-inner">
 <div id="<%= id %>" class="tab" >
 			<div>
-					<select class="book" >
+					<select class="book" id="book_<%= id %>" >
 						<option value="ESV" >ESV</option>
 						<option value="KJV" >KJV</option>
 					</select>
-				<input type="text" id="search_string" /><
-				<button onclick="slimcrm.search_bible();" >Search</button>
-			<div id="main" ></div>
+				<input type="text" id="search_string_<%= id %>" />
+				<button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
+			<div id="main_<%= id %>" ></div>
 		</div>
 </script>
 
