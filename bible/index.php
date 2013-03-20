@@ -58,7 +58,25 @@ slimcrm.search_bible = function(id){
 slimcrm.process_osis_text = function(text){
     return text;
 }
-
+slimcrm.process_verse_text = function(text){
+    var ta = text.split(' ');
+    var length = ta.lenght;
+    var book = "";
+    var i = 0;
+    while( length > i  ){
+        book = book + " " + ta[i];
+        i++;
+    }
+    va = ta[i].split(":");
+    chapter = 0;
+    verse = 0;
+    if( va.length = 2 ){
+        chapter = va[0];
+        verse = va[1];
+    }
+    slimcrm.verses = { 'book': book , 'verse': verse , 'chapter': chapter };
+    return verse;
+}
 
 </script>
 <script src="bible.js" type="text/javascript"></script>
@@ -97,7 +115,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 
 <script type="text/template" id="verse-new" >
 <pre>
-<% _(data).each(function( line ){ %><%= line.text %><% } ) %>
+<% _(data).each(function( line ){ %><% process_verse_text( line.verse ) %> <%= line.text %><% } ) %>
 </pre>
 </script>
 <script type="text/template" id="verse" >
