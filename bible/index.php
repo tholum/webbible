@@ -74,6 +74,7 @@ slimcrm.process_verse_text = function(text){
         chapter = va[0];
         verse = va[1];
     }
+    slimcrm.ta = ta;
     slimcrm.verses = { 'book': book , 'verse': verse , 'chapter': chapter };
     return verse;
 }
