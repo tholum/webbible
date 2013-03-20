@@ -6,9 +6,13 @@ A Special thanks to [CrossWire]( http://www.crosswire.org/index.jsp ) For there 
 
 Thanks Also to
 [jQuery](http://jquery.com/)
+
 [backbone.js](http://backbonejs.org/)
+
 [underscore.js](http://underscorejs.org/)
+
 [wijmo] (https://github.com/wijmo/Wijmo-Open)
+
 
 Notes For some reson wijmo does not like jquery ui 1.10, so I am using the included jquery ui
 
