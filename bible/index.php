@@ -38,6 +38,7 @@ slimcrm.add_tab = function(options){
     slimcrm.tabs++;
     settings.id = "bible_tab" + slimcrm.tabs;
     $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse );
+    
 };
 
 $(document).ready(function(){
@@ -61,10 +62,8 @@ slimcrm.process_osis_text = function(text){
 slimcrm.process_verse_text = function(text){
     var ta = text.split(' ');
     var book = "";
-    for(var i=0; i<ta.lenght;i++){
-        book = book + " " + ta[i];
-    }
-    var va = ta[i].split(":");
+    var vat = ta[ta.length - 1];
+    var va = vat.split(":");
     var chapter = 0;
     var verse = 0;
     if( va.length = 2 ){
@@ -72,10 +71,13 @@ slimcrm.process_verse_text = function(text){
         verse = va[1];
     }
     slimcrm.ta = ta;
+    book = text.replace( vat , "" );
     slimcrm.verses = { 'book': book , 'verse': verse , 'chapter': chapter };
     return verse;
 }
-
+slimcrm.num_click = function( verse ){
+	
+}
 </script>
 <script src="bible.js" type="text/javascript"></script>
 <script  >
@@ -107,7 +109,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 					</select>
 				<input type="text" id="search_string_<%= id %>" />
 				<button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
-                                <button onclick="alert( slimcrm.process_verse_text( '#search_string_<%= id %>' ) );">Test</button>
+                                <button onclick="alert( slimcrm.process_verse_text( $('#search_string_<%= id %>' ).val() ));">Test</button>
 			<div id="main_<%= id %>" ></div>
 		</div>
 </script>
@@ -120,7 +122,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="verse" >
 <div>
 <% _(data).each(function( line ){ %>
-            <%= slimcrm.process_verse_text( line.verse)  %>
+           <a onclick="slimcrm.num_click( '<%= line.verse %>' );" data-verse="<%= line.verse %>" > <%= slimcrm.process_verse_text( line.verse)  %></a>
 <%= line.text.replace("\n" , "<br/>") %>
 <% } ) %>
 </div>
