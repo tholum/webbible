@@ -107,7 +107,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 					</select>
 				<input type="text" id="search_string_<%= id %>" />
 				<button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
-                                <button onclick="slimcrm.process_verse_text( '#search_string_<%= id %>' );">Test</button>
+                                <button onclick="alert( slimcrm.process_verse_text( '#search_string_<%= id %>' ) );">Test</button>
 			<div id="main_<%= id %>" ></div>
 		</div>
 </script>
