@@ -62,10 +62,8 @@ slimcrm.process_verse_text = function(text){
     var ta = text.split(' ');
     var length = ta.lenght;
     var book = "";
-    var i = 0;
-    while( length > i  ){
+    for(var i=0; i<ta.lenght;i++){
         book = book + " " + ta[i];
-        i++;
     }
     va = ta[i].split(":");
     chapter = 0;
