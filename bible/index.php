@@ -60,14 +60,13 @@ slimcrm.process_osis_text = function(text){
 }
 slimcrm.process_verse_text = function(text){
     var ta = text.split(' ');
-    var length = ta.lenght;
     var book = "";
     for(var i=0; i<ta.lenght;i++){
         book = book + " " + ta[i];
     }
-    va = ta[i].split(":");
-    chapter = 0;
-    verse = 0;
+    var va = ta[i].split(":");
+    var chapter = 0;
+    var verse = 0;
     if( va.length = 2 ){
         chapter = va[0];
         verse = va[1];
@@ -108,6 +107,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 					</select>
 				<input type="text" id="search_string_<%= id %>" />
 				<button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
+                                <button onclick="slimcrm.process_verse_text( '#search_string_<%= id %>' );">Test</button>
 			<div id="main_<%= id %>" ></div>
 		</div>
 </script>
