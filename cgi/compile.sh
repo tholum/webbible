@@ -1,1 +1,1 @@
-g++ -o vr.cgi verserangeparse.cpp `pkg-config --cflags --libs sword`
+g++ -o vrp.cgi vrp.cpp `pkg-config --cflags --libs sword`
