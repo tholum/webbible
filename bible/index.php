@@ -49,7 +49,7 @@ $(document).ready(function(){
         };
 	$('.bk').html('<select id="bible_book" >' + slimcrm.bbl( { 'books': slimcrm.bible }) + '</select>' );
 	$.getJSON('/cgi-bin/vrp.cgi' , function( data ){ slimcrm.data = data; } );
-	$.getJSON('/cgi-bin/modules.cgi' , function( data ){ slimcrm.modules = data; } );
+	$.getJSON('modules.json' , function( data ){ slimcrm.modules = data; } );
 	$('#tabs').tabs();
         slimcrm.add_tab();
 });
@@ -91,7 +91,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 		<button onclick="$('#main').html(slimcrm.tpl({ data: slimcrm.data} ));">Click</button>
 		<button onclick="slimcrm.add_tab({ version: 'ESV'});">ESV</button>
                 <button onclick="slimcrm.add_tab({ version: 'KJV'});">KJV</button>
-		<button onclick="$.getJSON('/cgi-bin/modules.cgi' , function( data ){ slimcrm.modules = data; } );">Load</button>
+		<button onclick="$.getJSON('modules.json' , function( data ){ slimcrm.modules = data; } );">Load</button>
 	</div>
 	<div id="tabs" >
 		<ul>
