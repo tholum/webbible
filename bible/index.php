@@ -69,6 +69,7 @@ slimcrm.add_tab = function(options){
 $(document).ready(function(){
 	slimcrm.tpl = _.template( $('#verse').html() );
 	slimcrm.bbl = _.template( $('#books-dropdown').html() );
+        slimcrm.book_button = _.template($('#book-button').html() );
         slimcrm.bible = {
             new_tab: _.template( $('#tab-inner').html() )
         };
@@ -133,6 +134,9 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 	</div></div>
 
 </div>
+<script type="text/tempate" id="book-button">
+<div class="book_button" onclick="slimcrm.add_tab({ version: 'ESV'});" title="<%= desc.replace('"' , "'") %>"><%= name %></div>
+</script>
 <script type="text/template" id="books-dropdown">
 <% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
 </script>
