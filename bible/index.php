@@ -7,9 +7,14 @@
     <link href="./css/wijmo/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link href="css/wijmo/wijmo/jquery.wijmo.wijsplitter.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="css/wijmo/wijmo/jquery.wijmo.wijaccordion.css" rel="stylesheet" />
+    
     <link href="css/bible/jquery-ui-1.10.1.custom.css" rel="stylesheet" type="text/css" />
+    
     <script src="./js/wijmo/jquery.wijmo.wijutil.js" type="text/javascript"></script>
     <script src="./js/wijmo/jquery.wijmo.wijsplitter.js" type="text/javascript"></script>
+    <script src="./js/wijmo/jquery.wijmo.wijaccordion.js" type="text/javascript"></script>
+    
     <script id="scriptInit" type="text/javascript">
 
 	
@@ -77,11 +82,17 @@ $(document).ready(function(){
 	$.getJSON('modules.json' , function( data ){ 
             slimcrm.modules = data; 
             $(data).each(function(item , key ){
-                $('#book_list').append(slimcrm.book_button(data[item]));
+                if( data[item].type == "Biblical Texts"){
+                    $('#book_list').append(slimcrm.book_button(data[item]));
+                }
+                if( data[item].type == "Commentaries"){
+                    $('#commentary_list').append(slimcrm.book_button(data[item]));
+                }
             });
     } );
 	$('#tabs').tabs();
         slimcrm.add_tab();
+        $("#module_list").wijaccordion();
 });
 
 
@@ -119,7 +130,11 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 
 </script>
 <div id="splitter">
-	<div id="book_list" >
+	<div id="module_list" >
+            <H3>Books</H3>
+            <div id="book_list" ></div>
+            <H3>Commentary</H3>
+            <div id="commentary_list"></div>
 	</div>
 	<div>
 	<div id="splitter2" >
@@ -134,7 +149,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 
 </div>
 <script type="text/tempate" id="book-button">
-<div class="book_button" onclick="slimcrm.add_tab({ version: 'ESV'});" title="<%= desc.replace('"' , "'") %>"><%= name %></div>
+<div class="book_button" onclick="slimcrm.add_tab({ version: '<%= name %>'});" title="<%= desc.replace('"' , "'") %>"><%= name %></div>
 </script>
 <script type="text/template" id="books-dropdown">
 <% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
