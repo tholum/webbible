@@ -65,13 +65,13 @@ var slimcrm = {
 $(window).resize(function() {
     slimcrm.set_slider_widths();
 });
-
+slimcrm.test = function(){ alert( 'test');}
 slimcrm.add_tab = function(options){
     var settings = slimcrm.defaults;
     $.extend( settings , options );
     slimcrm.tabs++;
     settings.id = "bible_tab" + slimcrm.tabs;
-    $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse );
+    $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse + '<button onclick="slimcrm.test()">T</button>' );
     
 };
 $(document).ready(function(){
