@@ -31,3 +31,9 @@ background-image: linear-gradient(to bottom, #636363 0%, #BBBBBB 100%);
 	.searchbar li {
 		float: left;
 	}
+        .book_button {
+            height: 15px;
+            border-radius: 3px;
+            font-size: 16px;
+            font-weight: bold;
+        }
