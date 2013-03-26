@@ -157,11 +157,11 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 </script>
 <script type="text/template" id="tab-inner">
 <div id="<%= id %>" class="tab"  >
-			<div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
-                            slimcrm.search_bible('<%= id %>');
-                        </div>
-			<div id="main_<%= id %>" ></div>
-		</div>
+    <div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
+        <button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
+    </div>
+    <div id="main_<%= id %>" ></div>
+</div>
 </script>
 
 <script type="text/template" id="verse-new" >
