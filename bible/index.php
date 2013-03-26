@@ -155,7 +155,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
 </script>
 <script type="text/template" id="tab-inner">
-<div id="<%= id %>" class="tab" >
+<div id="<%= id %>" class="tab" data-book="" >
 			<div>
 					<select class="book" id="book_<%= id %>" >
 						<option value="ESV" >ESV</option>
