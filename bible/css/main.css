@@ -37,7 +37,7 @@ background-image: linear-gradient(to bottom, #636363 0%, #BBBBBB 100%);
             font-size: 16px;
             color: #222222;
             background: #CCCCCC;
-            padding: 5px
+            padding: 5px;
             /* IE10 Consumer Preview */ 
 background-image: -ms-linear-gradient(top, #DDDDDD 0%, #BBBBBB 100%);
 
