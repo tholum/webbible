@@ -142,7 +142,6 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 		<div  id="tabs" style="height: 100%;" >
 			<ul>
 			</ul>
-			Tabs
 		</div>
 		<div id="commentary" style="height: 100%;" >Commentary</div>
 		
