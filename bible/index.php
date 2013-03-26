@@ -65,7 +65,6 @@ slimcrm.add_tab = function(options){
     $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse );
     
 };
-
 $(document).ready(function(){
 	slimcrm.tpl = _.template( $('#verse').html() );
 	slimcrm.bbl = _.template( $('#books-dropdown').html() );
@@ -75,7 +74,12 @@ $(document).ready(function(){
         };
 	$('.bk').html('<select id="bible_book" >' + slimcrm.bbl( { 'books': slimcrm.bible }) + '</select>' );
 	$.getJSON('/cgi-bin/vrp.cgi' , function( data ){ slimcrm.data = data; } );
-	$.getJSON('modules.json' , function( data ){ slimcrm.modules = data; } );
+	$.getJSON('modules.json' , function( data ){ 
+            slimcrm.modules = data; 
+            $(data).each(function(item){
+                $('#book_list').append(slimcrm.book_button(item));
+            });
+    } );
 	$('#tabs').tabs();
         slimcrm.add_tab();
 });
@@ -115,12 +119,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 
 </script>
 <div id="splitter">
-	<div>
-		<button onclick="$('#main').html(slimcrm.tpl({ data: slimcrm.data} ));">Click</button>
-		<button onclick="slimcrm.add_tab({ version: 'ESV'});">ESV</button>
-                <button onclick="slimcrm.add_tab({ version: 'KJV'});">KJV</button>
-		<button onclick="$.getJSON('modules.json' , function( data ){ slimcrm.modules = data; } );">Load</button>
-		<button onclick='$("#splitter2").wijsplitter({ orientation: "vertical",  collapsingPanel: "commentary" });'>V</button>
+	<div id="book_list" >
 	</div>
 	<div>
 	<div id="splitter2" >
