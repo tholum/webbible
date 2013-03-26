@@ -77,7 +77,8 @@ $(document).ready(function(){
 	$.getJSON('modules.json' , function( data ){ 
             slimcrm.modules = data; 
             $(data).each(function(item , key ){
-                $('#book_list').append(slimcrm.book_button(data[key]));
+                alert( item + ":" + key);
+                $('#book_list').append(slimcrm.book_button(data[item]));
             });
     } );
 	$('#tabs').tabs();
