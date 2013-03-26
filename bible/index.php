@@ -76,8 +76,8 @@ $(document).ready(function(){
 	$.getJSON('/cgi-bin/vrp.cgi' , function( data ){ slimcrm.data = data; } );
 	$.getJSON('modules.json' , function( data ){ 
             slimcrm.modules = data; 
-            $(data).each(function(item){
-                $('#book_list').append(slimcrm.book_button(item));
+            $(data).each(function(item , key ){
+                $('#book_list').append(slimcrm.book_button(data[key]));
             });
     } );
 	$('#tabs').tabs();
