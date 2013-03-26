@@ -35,8 +35,9 @@ background-image: linear-gradient(to bottom, #636363 0%, #BBBBBB 100%);
             width: 100%;
             border-radius: 3px;
             font-size: 16px;
-            font-weight: bold;
+            color: #222222;
             background: #CCCCCC;
+            padding: 5px
             /* IE10 Consumer Preview */ 
 background-image: -ms-linear-gradient(top, #DDDDDD 0%, #BBBBBB 100%);
 
@@ -74,4 +75,8 @@ background-image: -webkit-linear-gradient(top, #DDDDFF 0%, #BBBBDD 100%);
 
 /* W3C Markup, IE10 Release Preview */ 
 background-image: linear-gradient(to bottom, #DDDDFF 0%, #BBBBDD 100%);
+        }
+        
+        .wijmo-wijaccordion .wijmo-wijaccordion-content {
+            padding: 0;
         }
