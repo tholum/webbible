@@ -98,7 +98,8 @@ $(document).ready(function(){
 
 
 slimcrm.search_bible = function(id){
-	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $("#search_string_" + id  ).val() , 'bible': $('#book_' + id ).val() , 'format': 'OSIS' } ) , function( data){ $('#main_' + id ).html( slimcrm.tpl( { 'data': data } ) ); } ) ;
+        var bbl_selector = "#" + id + " .bible_menu";
+	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $(bbl_selector).data('book') + ' ' + $(bbl_selector).data('chapter')  , 'bible': $(bbl_selector).data('version') , 'format': 'OSIS' } ) , function( data){ $('#main_' + id ).html( slimcrm.tpl( { 'data': data } ) ); } ) ;
 }
 slimcrm.process_osis_text = function(text){
     return text;
@@ -155,15 +156,10 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
 </script>
 <script type="text/template" id="tab-inner">
-<div id="<%= id %>" class="tab" data-book="" >
-			<div>
-					<select class="book" id="book_<%= id %>" >
-						<option value="ESV" >ESV</option>
-						<option value="KJV" >KJV</option>
-					</select>
-				<input type="text" id="search_string_<%= id %>" />
-				<button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
-                                <button onclick="alert( slimcrm.process_verse_text( $('#search_string_<%= id %>' ).val() ));">Test</button>
+<div id="<%= id %>" class="tab"  >
+			<div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
+                            slimcrm.search_bible('<%= id %>');
+                        </div>
 			<div id="main_<%= id %>" ></div>
 		</div>
 </script>
