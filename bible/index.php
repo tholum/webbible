@@ -11,9 +11,19 @@
     <script src="./js/wijmo/jquery.wijmo.wijutil.js" type="text/javascript"></script>
     <script src="./js/wijmo/jquery.wijmo.wijsplitter.js" type="text/javascript"></script>
     <script id="scriptInit" type="text/javascript">
+
+	
+
         $(document).ready(function () {
-            $("#splitter").wijsplitter({ orientation: "vertical", fullSplit: true });
-        });
+            $("#splitter").wijsplitter({ orientation: "vertical", fullSplit: true, panel2:
+{
+minSize:1, 
+collapsed:false, 
+scrollBars:"hidden"} 
+} );
+	    $("#splitter2").wijsplitter({ orientation: "vertical", fullSplit: false, collapsingPanel: "panel2"}); //, collapsingPanel: "commentary"
+        slimcrm.set_slider_widths();
+	});
     </script>
 <style>
 </style>
@@ -28,6 +38,21 @@ var slimcrm = {
         book: 'Romans',
         chapter: 8,
         verse: 1
+    },
+    set_slider_widths: function(){
+	/*
+		I hope to find an easer way to do this, but for now it works so we are sticking with it
+	*/
+	var book_list = $('#splitter .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width');
+	var tab_list = $('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width');
+	var commentary = $('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel2').css('width');
+	var book_list_int = book_list.replace("px" , "" );
+	var tab_list_int = tab_list.replace("px"  , "" );
+	var commentary_int = commentary.replace("px"  , "" );
+	var total = parseInt(book_list_int) + parseInt(tab_list_int) + parseInt(commentary_int);
+	$('#splitter .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width', ( total/5) + 'px' );
+	$('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width', ((total/5)*3 ) + 'px' );
+	$('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel2').css('width', ( total/5) + 'px');
     }
 };
 
@@ -53,6 +78,8 @@ $(document).ready(function(){
 	$('#tabs').tabs();
         slimcrm.add_tab();
 });
+
+
 
 slimcrm.search_bible = function(id){
 	$.getJSON('/cgi-bin/vrp.cgi?' + $.param( { 'search': $("#search_string_" + id  ).val() , 'bible': $('#book_' + id ).val() , 'format': 'OSIS' } ) , function( data){ $('#main_' + id ).html( slimcrm.tpl( { 'data': data } ) ); } ) ;
@@ -92,12 +119,19 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 		<button onclick="slimcrm.add_tab({ version: 'ESV'});">ESV</button>
                 <button onclick="slimcrm.add_tab({ version: 'KJV'});">KJV</button>
 		<button onclick="$.getJSON('modules.json' , function( data ){ slimcrm.modules = data; } );">Load</button>
+		<button onclick='$("#splitter2").wijsplitter({ orientation: "vertical",  collapsingPanel: "commentary" });'>V</button>
 	</div>
-	<div id="tabs" >
-		<ul>
-		</ul>
+	<div>
+	<div id="splitter2" >
+		<div  id="tabs" style="height: 100%;" >
+			<ul>
+			</ul>
+			Tabs
+		</div>
+		<div id="commentary" style="height: 100%;" >Commentary</div>
 		
-	</div>
+	</div></div>
+
 </div>
 <script type="text/template" id="books-dropdown">
 <% _(books).each(function( book ){ %><option value="<%= book %>" ><%= book %></option><% } ) %>
