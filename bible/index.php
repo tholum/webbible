@@ -62,6 +62,10 @@ var slimcrm = {
 };
 
 
+$(window).resize(function() {
+    slimcrm.set_slider_widths();
+});
+
 slimcrm.add_tab = function(options){
     var settings = slimcrm.defaults;
     $.extend( settings , options );
