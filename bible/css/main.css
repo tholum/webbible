@@ -80,3 +80,13 @@ background-image: linear-gradient(to bottom, #DDDDFF 0%, #BBBBDD 100%);
         .wijmo-wijaccordion .wijmo-wijaccordion-content {
             padding: 0;
         }
+
+.verse_number {
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.verse_body {
+	margin: 0;
+	padding: 0;
+}
