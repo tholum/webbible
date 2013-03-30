@@ -98,3 +98,6 @@ background-image: linear-gradient(to bottom, #DDDDFF 0%, #BBBBDD 100%);
 .display_menu ul li {
     float: left;
 }
+.display_menu ul {
+    clear: both;
+}
