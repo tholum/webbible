@@ -168,7 +168,10 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="tab-inner">
 <div id="<%= id %>" class="tab"  >
     <div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
-    
+    <span id="<%= id %>_version" ><%= version %></span>
+        <span id="<%= id %>_book" ><%= book %></span>
+            <span id="<%= id %>_chapter" ><%= chapter %></span>
+                <span id="<%= id %>_cverse" ><%= verse %></span>
 	</div>
     <div id="main_<%= id %>" ></div>
 </div>
