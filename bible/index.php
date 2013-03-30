@@ -138,7 +138,7 @@ slimcrm.menu_change = function( obj , section ){
     parent = $(obj).parent();
     switch( section ){
         case "book":
-            parent.children('.display_menu').html('<ul></ul>').show();
+            parent.children('.display_menu').html('<ul></ul>');
             for( var key in slimcrm.books_of_bible ){
                 parent.children('.display_menu').children('ul').append('<li>' + key + '</li>');
             }
@@ -183,7 +183,7 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
             <span class="menu_book" id="<%= id %>_book" onclick="slimcrm.menu_change( this , 'book' );" ><%= book %></span>
             <span class="menu_chapter" id="<%= id %>_chapter" ><%= chapter %></span>
             <span class="menu_verse" id="<%= id %>_verse" ><%= verse %></span>
-                <div class="display_menu" style="display: none;" ></div>
+                <div class="display_menu" ></div>
         </div>
     <div id="main_<%= id %>" ></div>
 </div>
