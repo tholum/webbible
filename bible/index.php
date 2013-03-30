@@ -134,6 +134,18 @@ slimcrm.process_verse_text = function(text){
 slimcrm.num_click = function( verse ){
 	
 }
+slimcrm.menu_change = function( obj , section ){
+    parent = $(obj).parent();
+    switch( section ){
+        case "book":
+            parent.children('.display_menu').html('<ul>').show();
+            for( var key in slimcrm.books_of_bible ){
+                parent.children('.display_menu').append('<li>' + key + '</li>');
+            }
+            parent.children('.display_menu').append('</ul>');
+        break;
+    }    
+}
 </script>
 <script src="bible.js" type="text/javascript"></script>
 <script  >
@@ -168,11 +180,12 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="tab-inner">
 <div id="<%= id %>" class="tab"  >
     <div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
-    <span id="<%= id %>_version" ><%= version %></span>
-        <span id="<%= id %>_book" ><%= book %></span>
-            <span id="<%= id %>_chapter" ><%= chapter %></span>
-                <span id="<%= id %>_cverse" ><%= verse %></span>
-	</div>
+            <span class="menu_version" id="<%= id %>_version" ><%= version %></span>
+            <span class="menu_book" id="<%= id %>_book" onclick="slimcrm.menu_change( this , 'book' );" ><%= book %></span>
+            <span class="menu_chapter" id="<%= id %>_chapter" ><%= chapter %></span>
+            <span class="menu_verse" id="<%= id %>_verse" ><%= verse %></span>
+                <div class="display_menu" style="display: none;" ></div>
+        </div>
     <div id="main_<%= id %>" ></div>
 </div>
 </script>
