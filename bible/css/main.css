@@ -96,8 +96,8 @@ background-image: linear-gradient(to bottom, #DDDDFF 0%, #BBBBDD 100%);
     border-bottom-right-radius: 4px;
 }
 .display_menu ul li {
-    float: left;
+    display: inline-block;
 }
 .display_menu ul {
-    clear: both;
+    overflow: auto;
 }
