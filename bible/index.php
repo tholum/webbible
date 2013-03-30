@@ -138,11 +138,10 @@ slimcrm.menu_change = function( obj , section ){
     parent = $(obj).parent();
     switch( section ){
         case "book":
-            parent.children('.display_menu').html('<ul>').show();
+            parent.children('.display_menu').html('<ul></ul>').show();
             for( var key in slimcrm.books_of_bible ){
-                parent.children('.display_menu').append('<li>' + key + '</li>');
+                parent.children('.display_menu ul').append('<li>' + key + '</li>');
             }
-            parent.children('.display_menu').append('</ul>');
         break;
     }    
 }
