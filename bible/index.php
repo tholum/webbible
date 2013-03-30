@@ -58,7 +58,13 @@ var slimcrm = {
 	$('#splitter .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width', ( total/5) + 'px' );
 	$('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel1').css('width', ((total/5)*3 ) + 'px' );
 	$('#splitter2 .wijmo-wijsplitter-wrapper .wijmo-wijsplitter-v-panel2').css('width', ( total/5) + 'px');
-    }
+    },
+   close_tab: function( span ){
+	var rem_tab = $(span).parent().parent().attr('id').replace('ui-id-' , '' );
+	var href = $(span).parent().parent().attr('href');
+	$('#tabs').tabs("remove" , rem_tab );
+	$(href).remove();
+   }
 };
 
 
@@ -71,8 +77,9 @@ slimcrm.add_tab = function(options){
     $.extend( settings , options );
     slimcrm.tabs++;
     settings.id = "bible_tab" + slimcrm.tabs;
-    $('#tabs').append( slimcrm.bible.new_tab( settings ) );$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse + '<button onclick="slimcrm.test()">T</button>' );
-    
+    $('#tabs').append( slimcrm.bible.new_tab( settings ) );
+	$('#tabs').tabs('add','#' + settings.id , settings.version + ' ' + settings.book + ' ' + settings.chapter + ':' + settings.verse + '<span class="ui-icon ui-icon-circle-close" style="float: right;margin-left: 5px;" onclick="slimcrm.close_tab(this);"></span>' )    
+slimcrm.search_bible( settings.id );
 };
 $(document).ready(function(){
 	slimcrm.tpl = _.template( $('#verse').html() );
@@ -161,8 +168,8 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="tab-inner">
 <div id="<%= id %>" class="tab"  >
     <div class="bible_menu" data-version="<%= version %>" data-book="<%= book %>" data-chapter="<%= chapter %>" data-verse="<%= verse %>" >
-        <button onclick="slimcrm.search_bible('<%= id %>');" >Search</button>
-    </div>
+    
+	</div>
     <div id="main_<%= id %>" ></div>
 </div>
 </script>
@@ -175,8 +182,8 @@ slimcrm.bible = ['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua'
 <script type="text/template" id="verse" >
 <div>
 <% _(data).each(function( line ){ %>
-           <a onclick="slimcrm.num_click( '<%= line.verse %>' );" data-verse="<%= line.verse %>" > <%= slimcrm.process_verse_text( line.verse)  %></a>
-<%= line.text.replace("\n" , "<br/>") %>
+           <a class="verse_number" onclick="slimcrm.num_click( '<%= line.verse %>' );" data-verse="<%= line.verse %>" > <%= slimcrm.process_verse_text( line.verse)  %></a><p class="verse_body" >
+<%= line.text.replace("\n" , "<br/>") %></p>
 <% } ) %>
 </div>
 </script>
