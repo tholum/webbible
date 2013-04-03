@@ -1,5 +1,7 @@
 webbible
 ========
+If you would like to help fund this project You can donate BitCoin's at 1Emn575guTD7vP9yDBV8mCx7UwRjxfg5wC
+
 This is a web based project that's aim it to offer full featured bible study tool that is web based.
 
 A Special thanks to [CrossWire]( http://www.crosswire.org/index.jsp ) For there sword api which is the basis the back end
